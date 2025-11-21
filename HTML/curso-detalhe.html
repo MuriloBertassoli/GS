@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowMind - Detalhe do Curso</title>
+    
+    <link rel="stylesheet" href="/CSS/style.css">
+    
+    <script src="../js/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">GrowMind</a>
+            
+            <ul class="menu-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="integrantes.html">Equipe</a></li>
+            </ul>
+            
+            <button class="menu-hamburguer" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section class="page-header">
+            <div class="container">
+                <h1>Educação Psicológica</h1>
+                <p>Aprenda sobre autoconsciência, comunicação e empatia.</p>
+            </div>
+        </section>
+
+        <section class="course-content-section">
+            <div class="container course-layout">
+                
+                <div class="course-main-content">
+                    <h2>Módulo 1: O que é Empatia?</h2>
+                    
+                    <div class="video-container">
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <h3>Resumo do Módulo</h3>
+                    <p>Neste módulo, exploramos o conceito fundamental de empatia no ambiente corporativo. Diferente da simpatia, a empatia exige uma conexão real e a capacidade de se colocar na perspectiva do outro sem julgamentos.</p>
+                    <p>Aprenderemos técnicas de escuta ativa e como identificar sinais não-verbais que ajudam a melhorar a comunicação e reduzir conflitos na equipe.</p>
+                </div>
+
+                <aside class="course-sidebar">
+                    <h3>Teste seu Conhecimento</h3>
+                    <p>Responda corretamente para concluir este curso.</p>
+                    
+                    <form id="quiz-form">
+                        
+                        <div class="quiz-question">
+                            <label>1. O que é empatia?</label>
+                            <div class="quiz-option">
+                                <input type="radio" name="q1" value="a" id="q1a">
+                                <label for="q1a">A) Sentir pena de alguém.</label>
+                            </div>
+                            <div class="quiz-option">
+                                <input type="radio" name="q1" value="b" id="q1b">
+                                <label for="q1b">B) Se colocar no lugar do outro.</label>
+                            </div>
+                            <div class="quiz-option">
+                                <input type="radio" name="q1" value="c" id="q1c">
+                                <label for="q1c">C) Concordar com tudo.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-question">
+                            <label>2. Qual o pilar da comunicação?</label>
+                            <div class="quiz-option">
+                                <input type="radio" name="q2" value="a" id="q2a">
+                                <label for="q2a">A) Falar alto.</label>
+                            </div>
+                            <div class="quiz-option">
+                                <input type="radio" name="q2" value="b" id="q2b">
+                                <label for="q2b">B) Escuta ativa.</label>
+                            </div>
+                            <div class="quiz-option">
+                                <input type="radio" name="q2" value="c" id="q2c">
+                                <label for="q2c">C) Usar palavras difíceis.</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="quiz-submit">Finalizar Quiz</button>
+                    </form>
+
+                    <div id="quiz-result"></div>
+
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 GrowMind. Todos os direitos reservados.</p>
+            <p>Projeto de Front-End Design Engineering</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

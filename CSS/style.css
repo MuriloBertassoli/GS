@@ -1,0 +1,872 @@
+
+
+/* Importação das Fontes (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+/* * Variáveis CSS (Paleta e Tipografia)
+ * (Critério: Paleta de cores consistente - Slide 14/23)
+ */
+:root {
+    /* Paleta de Cores */
+    --cor-primaria: #0A4F8A;     
+    --cor-secundaria: #4CAF50; 
+    --cor-fundo: #F4F7F6;       
+    --cor-texto: #333333;      
+    --cor-branco: #FFFFFF;     
+    --cor-erro: #D93025;       
+    --cor-borda: #E0E0E0;      
+
+    /* Tipografia */
+    --fonte-titulos: 'Montserrat', sans-serif;
+    --fonte-corpo: 'Roboto', sans-serif;
+
+    /* Outros */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius: 8px;
+    --header-height: 70px;
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    line-height: 1.6;
+    /* Garante que o conteúdo comece abaixo do header fixo */
+    padding-top: var(--header-height); 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fonte-titulos);
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--cor-secundaria);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+/* * Container*/
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0; /* Espaçamento padrão */
+}
+
+/* * Botões*/
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: var(--fonte-titulos);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41; 
+    color: var(--cor-branco);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+}
+
+.btn-secondary:hover {
+    background-color: #083d6b; 
+    color: var(--cor-branco);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* Cabeçalho de Página (Usado em todas as páginas, exceto index) */
+.page-header {
+    background-color: var(--cor-branco);
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.page-header .container {
+    padding: 0 15px; 
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* * Header */
+header {
+    width: 100%;
+    background-color: var(--cor-branco);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fixo no topo */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: var(--header-height);
+}
+
+header nav.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 5%; 
+}
+
+.logo {
+    font-family: var(--fonte-titulos);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.logo:hover {
+    text-decoration: none;
+    color: var(--cor-primaria);
+}
+
+.menu-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.menu-links a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 10px 5px;
+    position: relative;
+}
+
+/* Efeito 'hover' com sublinhado */
+.menu-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-secundaria);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.menu-links a:hover::after {
+    width: 100%;
+}
+
+/* Botão Hambúrguer*/
+.menu-hamburguer {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-hamburguer span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor-primaria);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Animação do Hambúrguer para "X" quando 'ativo' (JS) */
+.menu-hamburguer.ativo span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-hamburguer.ativo span:nth-child(2) {
+    opacity: 0;
+}
+.menu-hamburguer.ativo span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Footer*/
+footer {
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: auto; 
+}
+
+footer p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+/* === INDEX.HTML === */
+.hero {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero .container {
+    padding: 0 15px;
+}
+
+.hero-content h1 {
+    color: var(--cor-branco);
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.pilares {
+    background-color: var(--cor-fundo);
+}
+
+.pilares h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap; /* Permite quebrar linha */
+}
+
+.card {
+    background-color: var(--cor-branco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 30px;
+    width: 30%;
+    min-width: 280px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px auto;
+}
+
+.card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+
+/* === CURSOS.HTML === */
+.course-list h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.course-cards-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.course-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cor-branco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 30px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.course-card-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.course-card-content h3 {
+    margin-bottom: 10px;
+}
+
+.course-card-content p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.course-status {
+    display: inline-block;
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* === SOBRE.HTML === */
+.about-content {
+    background: var(--cor-branco);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-section {
+    margin-bottom: 30px;
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--cor-secundaria);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.about-section ul {
+    list-style: disc;
+    list-style-position: inside;
+    margin-top: 15px;
+}
+
+.about-section li {
+    margin-bottom: 10px;
+}
+
+/* --- ESTILOS ADICIONAIS PARA SOBRE.HTML*/
+
+.about-content-v2 {
+    background: var(--cor-branco);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-content-v2 .about-section {
+    margin-bottom: 30px;
+}
+
+.about-content-v2 .about-section h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--cor-secundaria);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.about-content-v2 ul {
+    list-style: none; 
+    margin-top: 15px;
+    padding-left: 0;
+}
+
+.about-content-v2 li {
+    position: relative;
+    padding-left: 25px; 
+    margin-bottom: 12px;
+}
+
+/* Adiciona um 'check' verde customizado */
+.about-content-v2 li::before {
+    content: '✔'; 
+    color: var(--cor-secundaria);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+}
+
+.beneficios-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.beneficio-coluna {
+    flex-basis: 48%; 
+    background-color: var(--cor-fundo);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--cor-borda);
+}
+
+.beneficio-coluna h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+}
+
+/* Responsividade para as colunas de benefícios */
+@media (max-width: 768px) {
+    .beneficios-container {
+        flex-direction: column; 
+    }
+
+    .about-content-v2 {
+        padding: 20px;
+    }
+}
+
+/* === FAQ.HTML === */
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--cor-branco);
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden; 
+}
+
+/* (Interatividade Nativa) */
+summary.faq-question {
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    cursor: pointer;
+    list-style: none; 
+    position: relative;
+    display: block;
+}
+
+/* Ícone customizado '+' */
+summary.faq-question::after {
+    content: '+';
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 20px 20px 20px;
+    border-top: 1px solid var(--cor-fundo);
+}
+
+details[open] summary.faq-question::after {
+    content: '−'; 
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+/* === CONTATO.HTML === */
+.contact-form-section {
+    background: var(--cor-branco);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 5px;
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 5px rgba(10, 79, 138, 0.3);
+}
+
+/* * Estilos para Validação JS (Obrigatório - Slide 18/23)
+ * Eles são ativados via JavaScript.
+ */
+.form-group input.error,
+.form-group textarea.error {
+    border-color: var(--cor-erro);
+}
+
+.error-message {
+    color: var(--cor-erro);
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none; 
+}
+
+
+/* === INTEGRANTES.HTML === */
+.team-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.team-member-card {
+    background: var(--cor-branco);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    width: 320px;
+    transition: all 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-member-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover; 
+    margin: 0 auto 20px auto;
+    border: 4px solid var(--cor-primaria);
+}
+
+.team-member-name {
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 5px;
+}
+
+.team-member-info {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.team-member-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.team-link {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.team-link:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
+    text-decoration: none;
+}
+
+
+/* === CURSO-DETALHE.HTML === */
+.course-layout {
+    display: flex;
+    gap: 40px;
+}
+
+.course-main-content {
+    flex: 3; 
+}
+
+/* Responsividade do Vídeo Embutido */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border-radius: var(--border-radius);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.course-main-content h3 {
+    margin-top: 30px;
+    border-bottom: 1px solid var(--cor-borda);
+    padding-bottom: 5px;
+}
+
+.course-sidebar {
+    flex: 1; 
+    background: var(--cor-branco);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    align-self: flex-start; 
+}
+
+.quiz-question {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+.quiz-question > label {
+    font-weight: 700;
+    display: block;    
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--cor-primaria);
+}
+
+.quiz-option {
+    display: flex;       
+    align-items: center;  
+    margin-bottom: 12px;
+    cursor: pointer;   
+    transition: background 0.2s;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.quiz-option:hover {
+    background-color: #f0f8ff; 
+}
+
+.quiz-option input[type="radio"] {
+    margin-right: 10px;  
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.quiz-option label {
+    font-weight: 400;
+    margin: 0;          
+    display: inline-block; 
+    cursor: pointer;
+    line-height: 1.2;    
+}
+
+#quiz-submit {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#quiz-result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: 700;
+    display: none; 
+}
+
+#quiz-result.success {
+    background-color: #e6f9e6;
+    color: var(--cor-secundaria);
+    border: 1px solid var(--cor-secundaria);
+}
+
+#quiz-result.fail {
+    background-color: #fdeeee;
+    color: var(--cor-erro);
+    border: 1px solid var(--cor-erro);
+}
+
+@media (max-width: 992px) {
+    /* Layouts */
+    .card {
+        width: 45%; 
+    }
+
+    .team-member-card {
+        width: 45%; 
+    }
+
+    /* Página de Curso */
+    .course-layout {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    /* * Menu Responsivo */
+    .menu-hamburguer {
+        display: flex; 
+        z-index: 1001; 
+    }
+
+    .menu-links {
+        /* Esconde o menu de links normal */
+        display: none;
+        
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Tela cheia */
+        background-color: var(--cor-branco);
+        
+        /* Layout dos links */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    .menu-links.ativo {
+        display: flex;
+    }
+
+    .menu-links a {
+        font-size: 1.5rem;
+    }
+    .menu-links a::after {
+        display: none; 
+    }
+
+    /* Ajustes Gerais */
+    .container {
+        padding: 20px 0;
+    }
+
+    body {
+        padding-top: var(--header-height);
+    }
+    
+    header nav.container {
+        padding: 0 5%;
+    }
+
+    /* Index */
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .card {
+        width: 90%; /* 1 coluna de cards */
+    }
+
+    /* Cursos */
+    .course-card {
+        flex-direction: column; /* Empilha o botão */
+        text-align: center;
+    }
+    .course-card-content {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    /* Integrantes */
+    .team-member-card {
+        width: 90%; /* 1 coluna */
+    }
+
+    /* Contato */
+    .contact-form-section {
+        padding: 20px;
+    }
+
+    /* Sobre */
+    .about-content {
+        padding: 20px;
+    }
+}
