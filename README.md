@@ -83,7 +83,7 @@ Projeto desenvolvido pelos alunos da turma **[SUA TURMA AQUI]**:
 
 1.  Clone este repositório:
     ```bash
-    git clone []
+    git clone [https://github.com/MuriloBertassoli/GS]
     ```
 2.  Abra a pasta do projeto no **VS Code**.
 3.  Utilize a extensão **Live Server** para abrir o arquivo `index.html` ou abra diretamente no navegador.
